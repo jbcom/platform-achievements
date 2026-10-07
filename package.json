@@ -149,7 +149,7 @@
   },
   "homepage": "https://github.com/jbcom/platform-achievements#readme",
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
   "keywords": [
     "achievements",

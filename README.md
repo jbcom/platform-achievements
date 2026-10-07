@@ -112,7 +112,7 @@ icons however your game draws things.
 
 ## Compatibility
 
-- Node 24 or later. The package is plain TypeScript with no platform APIs, so it also runs in
+- Node.js 22, 24 and 26 (the maintained lines; `engines.node` is `>=22`). The package is plain TypeScript with no platform APIs, so it also runs in
   browsers and in a Capacitor webview.
 - `@idleflowgames/capacitor-play-games` 0.3 on Capacitor 8 matches the game-services interface, and
   `steamworks.js` 0.4 matches the Steam one. Both are typed structurally, so any compatible object

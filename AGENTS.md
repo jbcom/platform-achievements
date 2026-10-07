@@ -6,7 +6,8 @@ from reading the code alone.
 ## Toolchain
 
 - Package manager: pnpm 12, pinned in `package.json#packageManager`. Use `mise install` (reads
-  `mise.toml`) for a matching local Node 26 / pnpm 12 toolchain, or `corepack enable`.
+  `mise.toml`) for the default local Node 26 / pnpm 12 toolchain, or `corepack enable`.
+  Node.js 22, 24 and 26 are supported; scripts and hooks must not require an exact Node patch.
 - TypeScript 7 (native). `moduleResolution: node10` no longer exists; all tsconfigs use `bundler`.
 - This is a pnpm workspace with two members: `.` (the published library) and `docs/` (the private
   Sourcey documentation site). Root scripts operate on the library; `pnpm docs:*` delegate to `docs/`.
