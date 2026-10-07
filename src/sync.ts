@@ -1,33 +1,50 @@
 /**
- * Mirroring the profile's achievements to a platform (docs/design/07-meta.md, Storage and sync): on sign-in, on resume
- * and after banking, send what the platform still needs and record each acknowledgement only once the platform has
- * confirmed it. Offline, signed out or failing, nothing is lost: what was not acknowledged stays outstanding.
+ * Mirroring a player's achievements to a platform: on sign-in, on resume and after earning one, send what
+ * the platform still needs and record each acknowledgement only once the platform has confirmed it.
+ * Offline, signed out or failing, nothing is lost: what was not acknowledged stays outstanding.
  */
-import type { AchievementProgress } from './evaluate'
-import { ackValue, outstanding, type PlatformAchievements } from './platform'
-import type { AchievementStore } from './store'
+import {
+  ackValue,
+  type Earned,
+  outstanding,
+  type PlatformAchievement,
+  type PlatformAchievements,
+} from './platform'
+import type { AcknowledgementStore } from './store'
+
+export interface SyncRequest {
+  /** The resolved achievement list (see `resolveAchievements`). */
+  readonly achievements: readonly PlatformAchievement[]
+  /** What the player has earned, by key. */
+  readonly earned: Earned
+  readonly adapter: PlatformAchievements
+  readonly store: AcknowledgementStore
+}
 
 export type SyncResult = {
   /** Reports the platform confirmed. */
   readonly sent: number
-  /** Reports that failed and stay outstanding, with why, for the caller to log. */
+  /** Reports that failed and stay outstanding. */
   readonly failed: number
+  /** Why each failure happened, for the caller to log. */
   readonly errors: readonly { key: string; message: string }[]
   /** Reports the platform cannot address yet (a Play achievement without its console id). */
   readonly unaddressed: number
   readonly signedIn: boolean
 }
 
-export async function syncAchievements(
-  progress: AchievementProgress,
-  adapter: PlatformAchievements,
-  store: AchievementStore,
-): Promise<SyncResult> {
+/**
+ * Send what the platform still needs. Safe to call as often as you like, from anywhere: a second call
+ * after a successful one sends nothing. One failing report never stops the others.
+ */
+export async function syncAchievements(request: SyncRequest): Promise<SyncResult> {
+  const { achievements, earned, adapter, store } = request
   const platform = adapter.platform
-  if (platform === null || !(await adapter.signedIn()))
+  if (platform === null || !(await adapter.signedIn())) {
     return { sent: 0, failed: 0, errors: [], unaddressed: 0, signedIn: false }
+  }
   const acks = await store.acks(platform)
-  const reports = outstanding(progress, acks, {
+  const reports = outstanding(achievements, earned, acks, {
     progress: adapter.reportsProgress && store.durable,
   })
   let sent = 0

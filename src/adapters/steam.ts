@@ -1,12 +1,13 @@
 /**
- * Steam achievements through `steamworks.js`, for a future desktop build (docs/design/07-meta.md, Storage and sync).
- * The desktop shell initialises the client and hands it in; this adapter needs only the part of its API below.
+ * Steam achievements through `steamworks.js`, for a desktop build. The desktop shell initialises the
+ * client and passes it in (or `null` when Steam is not running); this package imports no Steam module
+ * and needs only the part of its API below.
  *
- * Steam's progress is absolute: an incremental achievement's progress stat (`STAT_<ID>`) is set to the steps reached,
- * and Steam shows it as the achievement's progress bar. Every change is stored (`stats.store`) before it counts as
- * acknowledged.
+ * Steam's progress is absolute: an incremental achievement's progress stat (`STAT_<KEY>` by default)
+ * is set to the steps reached, and Steam shows it as the achievement's progress bar. Every change is
+ * stored (`stats.store`) before it counts as acknowledged.
  */
-import type { PlatformAchievements } from '@/game/meta/achievements/platform'
+import type { PlatformAchievements } from '../platform'
 
 /** The part of a `steamworks.js` client the adapter uses. */
 export interface SteamClient {
@@ -18,11 +19,12 @@ export interface SteamClient {
 /** `steamworks.js`'s `overlay.Dialog.Achievements`. */
 export const STEAM_ACHIEVEMENTS_DIALOG = 6
 
+/** @param client The initialised `steamworks.js` client, or `null` when Steam is not running. */
 export function steamAchievements(client: SteamClient | null): PlatformAchievements {
   const must = (ok: boolean, what: string) => {
     if (!ok) throw new Error(`Steam refused ${what}`)
   }
-  const steam = () => {
+  const steam = (): SteamClient => {
     if (!client) throw new Error('Steam is not running')
     return client
   }

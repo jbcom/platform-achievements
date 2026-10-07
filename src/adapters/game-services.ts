@@ -1,15 +1,15 @@
 /**
- * Play Games and Game Center achievements through a Capacitor game-services plugin (docs/design/07-meta.md, Storage and
- * sync). The plugin is `@idleflowgames/capacitor-play-games` (Capacitor 8; Play Games Services v2 on Android, GameKit
- * on iOS), installed with the consoles' setup (07-meta, Owner steps); like every Capacitor plugin it is imported only in
- * `src/platform/mobile.ts`, which hands it in here. This adapter needs only the part of its API below.
+ * Google Play Games and Game Center achievements through a Capacitor game-services plugin. The shape
+ * below matches `@idleflowgames/capacitor-play-games` (Capacitor 8; Play Games Services v2 on Android,
+ * GameKit on iOS), but it is structural: any object with these four methods works, and this package
+ * imports no plugin. The app imports the plugin and passes it in.
  *
- * The plugin's progress call only adds (`incrementAchievement`: steps on Play, percentage points on Game Center), so an
- * absolute value is sent as the difference from what the platform last acknowledged; `syncAchievements` asks for
- * progress only when those acknowledgements are stored durably.
+ * The plugin's progress call only adds (`incrementAchievement`: whole steps on Play, percentage points
+ * on Game Center), so an absolute value is sent as the difference from what the platform last
+ * acknowledged. `syncAchievements` asks for progress only when those acknowledgements are stored
+ * durably.
  */
-import type { Platform } from '@/game/balance/achievements'
-import type { PlatformAchievement, PlatformAchievements } from '@/game/meta/achievements/platform'
+import type { PlatformAchievement, PlatformAchievements } from '../platform'
 
 /** The part of the game-services plugin the adapter uses. */
 export interface GameServicesPlugin {
@@ -19,9 +19,16 @@ export interface GameServicesPlugin {
   showAchievements(): Promise<void>
 }
 
+/** Which service the plugin is talking to on this device. */
+export type GameServicesPlatform = 'play' | 'game-center'
+
+/**
+ * @param plugin The game-services plugin.
+ * @param platform `play` on Android, `game-center` on iOS.
+ */
 export function gameServicesAchievements(
   plugin: GameServicesPlugin,
-  platform: Extract<Platform, 'play' | 'game-center'>,
+  platform: GameServicesPlatform,
 ): PlatformAchievements {
   const idOf = (a: PlatformAchievement): string => {
     const id = platform === 'play' ? a.playId : a.gameCenterId

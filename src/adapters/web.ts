@@ -1,9 +1,9 @@
 /**
- * The web build's achievements service: there is no platform profile in a browser, so nothing is ever signed in and
- * nothing is sent. The profile's achievements stay outstanding for whichever platform the player signs in to later
- * (docs/design/07-meta.md, Storage and sync).
+ * The web build's achievements service: there is no platform profile in a browser, so nothing is ever
+ * signed in and nothing is sent. The player's achievements stay outstanding for whichever platform
+ * they sign in to later.
  */
-import type { PlatformAchievements } from '@/game/meta/achievements/platform'
+import type { PlatformAchievements } from '../platform'
 
 export const webAchievements: PlatformAchievements = {
   platform: null,
