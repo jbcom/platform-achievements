@@ -1,0 +1,16 @@
+# platform-achievements
+
+> Cross-platform game achievements: describe achievements once, mirror them to Google Play Games, Game
+> Center and Steam with an idempotent earned-minus-acknowledged sync, and generate the store consoles'
+> submission files. No runtime dependencies; the Capacitor game-services plugin and the steamworks.js
+> client are passed in as structural interfaces.
+
+## Docs
+
+- [Documentation site](https://jbcom.github.io/platform-achievements/): the published, browsable version of everything below.
+- [README](https://github.com/jbcom/platform-achievements/blob/main/README.md): the model, install, quick start, what each platform supports.
+- [API reference](https://github.com/jbcom/platform-achievements/blob/main/docs/API.md): every export, by entry point.
+- [Platforms](https://github.com/jbcom/platform-achievements/blob/main/docs/platforms.md): how the adapters map onto each service and how to submit the generated files.
+- [Architecture](https://github.com/jbcom/platform-achievements/blob/main/docs/ARCHITECTURE.md): module boundaries, invariants, intentional limits.
+- [AGENTS.md](https://github.com/jbcom/platform-achievements/blob/main/AGENTS.md): toolchain, invariants not to violate, doc/test sync obligations.
+- [CONTRIBUTING.md](https://github.com/jbcom/platform-achievements/blob/main/CONTRIBUTING.md): local setup, the `pnpm verify` gate, commit and release conventions.

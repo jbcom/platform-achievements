@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "platform-achievements",
+  "description": "Cross-platform game achievements: one definition list mirrored to Google Play Games, Game Center and Steam with an idempotent earned-minus-acknowledged sync, structural adapters, and store-console submission files.",
+  "branch": "main",
+  "folders": ["docs", "src"],
+  "excludeFolders": ["node_modules", "dist", "coverage", "docs/dist", "docs/node_modules"],
+  "excludeFiles": ["CHANGELOG.md"],
+  "rules": [
+    "Pass the game-services plugin and the steamworks.js client in; the package never imports them.",
+    "Never queue reports: what a platform needs is always earned minus acknowledged.",
+    "Record an acknowledgement only after the platform confirmed it, and never lower one.",
+    "Describe a graded achievement as one achievement per grade; the platforms have no tiers."
+  ]
+}
