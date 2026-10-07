@@ -9,8 +9,8 @@ import {
   outstanding,
   type PlatformAchievement,
   type PlatformAchievements,
-} from './platform'
-import type { AcknowledgementStore } from './store'
+} from './platform.js'
+import type { AcknowledgementStore } from './store.js'
 
 export interface SyncRequest {
   /** The resolved achievement list (see `resolveAchievements`). */

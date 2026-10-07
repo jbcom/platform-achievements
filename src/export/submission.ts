@@ -10,11 +10,11 @@
  * Text comes from the definitions, so a translation is another call with the translated list and
  * its `locale`.
  */
-import type { PlatformAchievement } from '../platform'
-import { appStoreConnectSubmission } from './app-store-connect'
-import { playConsoleSubmission } from './play'
-import { steamworksSubmission } from './steamworks'
-import type { ExportOptions, Submission } from './types'
+import type { PlatformAchievement } from '../platform.js'
+import { appStoreConnectSubmission } from './app-store-connect.js'
+import { playConsoleSubmission } from './play.js'
+import { steamworksSubmission } from './steamworks.js'
+import type { ExportOptions, Submission } from './types.js'
 
 /** All three consoles' submissions in one. */
 export function submission(

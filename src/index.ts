@@ -14,7 +14,7 @@ export {
   resolveAchievements,
   steamApiName,
   steamStat,
-} from './platform'
-export { type AcknowledgementStore, MemoryAcknowledgementStore } from './store'
-export { type SyncRequest, type SyncResult, syncAchievements } from './sync'
-export { type AchievementIssue, CONSOLE_LIMITS, validateAchievements } from './validate'
+} from './platform.js'
+export { type AcknowledgementStore, MemoryAcknowledgementStore } from './store.js'
+export { type SyncRequest, type SyncResult, syncAchievements } from './sync.js'
+export { type AchievementIssue, CONSOLE_LIMITS, validateAchievements } from './validate.js'

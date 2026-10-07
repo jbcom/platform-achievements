@@ -1,4 +1,4 @@
-import type { PlatformAchievement } from '../platform'
+import type { PlatformAchievement } from '../platform.js'
 
 /** An icon file the caller rasterises: the package names it and sizes it, the game draws it. */
 export type IconFile = {

@@ -2,14 +2,14 @@
  * App Store Connect: `app-store-connect.json`, one record per achievement in the shape of the App
  * Store Connect API's Game Center achievement and localization attributes, and a 1024 px PNG each.
  */
-import type { PlatformAchievement } from '../platform'
+import type { PlatformAchievement } from '../platform.js'
 import {
   DEFAULT_LOCALE,
   type ExportOptions,
   fileStem,
   GAME_CENTER_ICON,
   type Submission,
-} from './types'
+} from './types.js'
 
 export function appStoreConnectSubmission(
   achievements: readonly PlatformAchievement[],

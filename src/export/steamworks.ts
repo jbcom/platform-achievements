@@ -2,8 +2,8 @@
  * Steamworks: `steamworks.json`, the achievements and their progress stats as the App Admin page lists
  * them (Steam has no bulk import), and 256 px achieved and unachieved JPEGs each.
  */
-import type { PlatformAchievement } from '../platform'
-import { fileStem, type IconFile, STEAM_ICON, type Submission } from './types'
+import type { PlatformAchievement } from '../platform.js'
+import { fileStem, type IconFile, STEAM_ICON, type Submission } from './types.js'
 
 export function steamworksSubmission(achievements: readonly PlatformAchievement[]): Submission {
   const icons: IconFile[] = []

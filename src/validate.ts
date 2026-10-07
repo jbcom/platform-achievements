@@ -3,7 +3,7 @@
  * will be rejected at submission fails in your tests instead. Game Center's limits are the tightest
  * and bind a game for its whole lifetime: its achievements cannot be deleted once released.
  */
-import type { AchievementPlatform, PlatformAchievement } from './platform'
+import type { AchievementPlatform, PlatformAchievement } from './platform.js'
 
 /** The limits the consoles enforce, as documented when this package was written. */
 export const CONSOLE_LIMITS = {

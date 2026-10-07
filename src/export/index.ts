@@ -1,8 +1,8 @@
-export { appStoreConnectSubmission } from './app-store-connect'
-export { csvField, csvLines, csvRow } from './csv'
-export { playConsoleSubmission, playIdsFromResources } from './play'
-export { steamworksSubmission } from './steamworks'
-export { submission } from './submission'
+export { appStoreConnectSubmission } from './app-store-connect.js'
+export { csvField, csvLines, csvRow } from './csv.js'
+export { playConsoleSubmission, playIdsFromResources } from './play.js'
+export { steamworksSubmission } from './steamworks.js'
+export { submission } from './submission.js'
 export {
   DEFAULT_LOCALE,
   type ExportOptions,
@@ -12,5 +12,5 @@ export {
   PLAY_ICON,
   STEAM_ICON,
   type Submission,
-} from './types'
-export { crc32, createZip, playConsoleZip, type ZipEntries } from './zip'
+} from './types.js'
+export { crc32, createZip, playConsoleZip, type ZipEntries } from './zip.js'

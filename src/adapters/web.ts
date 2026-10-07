@@ -3,7 +3,7 @@
  * signed in and nothing is sent. The player's achievements stay outstanding for whichever platform
  * they sign in to later.
  */
-import type { PlatformAchievements } from '../platform'
+import type { PlatformAchievements } from '../platform.js'
 
 export const webAchievements: PlatformAchievements = {
   platform: null,

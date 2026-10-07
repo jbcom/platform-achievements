@@ -9,7 +9,7 @@
  * acknowledged. `syncAchievements` asks for progress only when those acknowledgements are stored
  * durably.
  */
-import type { PlatformAchievement, PlatformAchievements } from '../platform'
+import type { PlatformAchievement, PlatformAchievements } from '../platform.js'
 
 /** The part of the game-services plugin the adapter uses. */
 export interface GameServicesPlugin {

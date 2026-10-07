@@ -2,7 +2,7 @@
  * Where acknowledgements live. A platform's confirmation is recorded only after the platform has
  * confirmed it, and survives restarts when the store is durable: that is what makes the sync idempotent.
  */
-import type { AchievementPlatform, Acks } from './platform'
+import type { AchievementPlatform, Acks } from './platform.js'
 
 export interface AcknowledgementStore {
   /**

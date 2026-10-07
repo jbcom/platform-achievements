@@ -14,7 +14,8 @@ import { fileURLToPath } from 'node:url'
 
 const pkgRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const require = createRequire(import.meta.url)
-const tscBin = require.resolve('typescript/bin/tsc')
+// TypeScript 7 exports only a fixed set of subpaths, so find the `tsc` launcher from package.json.
+const tscBin = path.join(path.dirname(require.resolve('typescript/package.json')), 'bin', 'tsc')
 
 // Invoke TypeScript through the active Node executable instead of the platform-specific
 // node_modules/.bin shim.

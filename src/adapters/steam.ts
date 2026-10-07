@@ -7,7 +7,7 @@
  * is set to the steps reached, and Steam shows it as the achievement's progress bar. Every change is
  * stored (`stats.store`) before it counts as acknowledged.
  */
-import type { PlatformAchievements } from '../platform'
+import type { PlatformAchievements } from '../platform.js'
 
 /** The part of a `steamworks.js` client the adapter uses. */
 export interface SteamClient {

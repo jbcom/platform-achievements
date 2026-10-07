@@ -4,8 +4,8 @@
  * `AchievementsIconsMappings.csv`, and a 512 px PNG per achievement. The console wants the files and
  * icons in one flat zip (see `createZip`).
  */
-import type { PlatformAchievement } from '../platform'
-import { csvLines, csvRow } from './csv'
+import type { PlatformAchievement } from '../platform.js'
+import { csvLines, csvRow } from './csv.js'
 import {
   DEFAULT_LOCALE,
   type ExportOptions,
@@ -13,7 +13,7 @@ import {
   type IconFile,
   PLAY_ICON,
   type Submission,
-} from './types'
+} from './types.js'
 
 export function playConsoleSubmission(
   achievements: readonly PlatformAchievement[],
