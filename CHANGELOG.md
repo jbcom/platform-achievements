@@ -1,12 +1,5 @@
 # Changelog
 
-## [0.2.0](https://github.com/jbcom/platform-achievements/compare/v0.1.0...v0.2.0) (2026-10-07)
-
-
-### Features
-
-* **meta:** achievements registry, banking, platform mirroring and submission export ([e9fce11](https://github.com/jbcom/platform-achievements/commit/e9fce11c61fda084cc646daee84c37c472c024fb))
-
 ## 0.1.0 (2026-10-07)
 
 First release on npmjs, as `platform-achievements`, MIT licensed, from `github.com/jbcom/platform-achievements`.
