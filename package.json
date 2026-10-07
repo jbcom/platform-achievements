@@ -1,0 +1,166 @@
+{
+  "name": "platform-achievements",
+  "version": "0.1.0",
+  "description": "Cross-platform game achievements: one definition list mirrored to Google Play Games, Game Center and Steam with an idempotent earned-minus-acknowledged sync, structural adapters for the Capacitor game-services plugin and steamworks.js, and store-console submission files.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jon Bogaty <jon@jonbogaty.com>",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": false,
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    },
+    "./game-services": {
+      "import": {
+        "types": "./dist/esm/adapters/game-services.d.ts",
+        "default": "./dist/esm/adapters/game-services.js"
+      },
+      "require": {
+        "types": "./dist/cjs/adapters/game-services.d.cts",
+        "default": "./dist/cjs/adapters/game-services.cjs"
+      }
+    },
+    "./steam": {
+      "import": {
+        "types": "./dist/esm/adapters/steam.d.ts",
+        "default": "./dist/esm/adapters/steam.js"
+      },
+      "require": {
+        "types": "./dist/cjs/adapters/steam.d.cts",
+        "default": "./dist/cjs/adapters/steam.cjs"
+      }
+    },
+    "./web": {
+      "import": {
+        "types": "./dist/esm/adapters/web.d.ts",
+        "default": "./dist/esm/adapters/web.js"
+      },
+      "require": {
+        "types": "./dist/cjs/adapters/web.d.cts",
+        "default": "./dist/cjs/adapters/web.cjs"
+      }
+    },
+    "./export": {
+      "import": {
+        "types": "./dist/esm/export/index.d.ts",
+        "default": "./dist/esm/export/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/export/index.d.cts",
+        "default": "./dist/cjs/export/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "game-services": [
+        "./dist/esm/adapters/game-services.d.ts"
+      ],
+      "steam": [
+        "./dist/esm/adapters/steam.d.ts"
+      ],
+      "web": [
+        "./dist/esm/adapters/web.d.ts"
+      ],
+      "export": [
+        "./dist/esm/export/index.d.ts"
+      ],
+      "*": [
+        "./dist/esm/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "dist",
+    "docs/API.md",
+    "docs/ARCHITECTURE.md",
+    "docs/platforms.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "prepack": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "lint:docs": "markdownlint-cli2 README.md CONTRIBUTING.md SECURITY.md CODE_OF_CONDUCT.md CHANGELOG.md AGENTS.md \"docs/**/*.md\" \"!docs/node_modules/**\" \"!docs/dist/**\" .github/PULL_REQUEST_TEMPLATE.md",
+    "package:check": "publint && attw --pack . && node scripts/verify-package.mjs",
+    "smoke:consumer": "node scripts/consumer-smoke.mjs",
+    "verify": "pnpm run lint && pnpm run lint:docs && pnpm run typecheck && pnpm run coverage && pnpm run build && pnpm run package:check && pnpm run smoke:consumer",
+    "docs:dev": "pnpm --filter platform-achievements-docs dev",
+    "docs:build": "pnpm --filter platform-achievements-docs build",
+    "docs:check": "pnpm --filter platform-achievements-docs check",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@biomejs/biome": "2.5.15",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@types/node": "^24.13.3",
+    "@vitest/coverage-v8": "^5.0.3",
+    "lint-staged": "^17.6.0",
+    "markdownlint-cli2": "^0.23.3",
+    "publint": "^0.3.25",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged",
+    "commit-msg": "pnpm exec commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{ts,js,mjs,cjs,json}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "*.md": [
+      "markdownlint-cli2"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbcom/platform-achievements.git"
+  },
+  "packageManager": "pnpm@12.10.1",
+  "bugs": {
+    "url": "https://github.com/jbcom/platform-achievements/issues"
+  },
+  "homepage": "https://github.com/jbcom/platform-achievements#readme",
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "achievements",
+    "game-dev",
+    "google-play-games",
+    "play-games-services",
+    "game-center",
+    "gamekit",
+    "steam",
+    "steamworks",
+    "capacitor",
+    "idempotent-sync"
+  ]
+}

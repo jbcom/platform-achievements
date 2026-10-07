@@ -1,0 +1,36 @@
+name: Bug report
+description: Report reproducible incorrect behavior in platform-achievements.
+title: "fix: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: For security vulnerabilities, use the private reporting link in SECURITY.md.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the smallest runnable code sample, the achievement definitions and platform involved, and exact commands.
+      render: ts
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: "platform-achievements, the game-services plugin or steamworks.js client, Node.js, package manager, and operating system."
+      placeholder: "platform-achievements 0.1.0; Capacitor 8; Node 26; pnpm 12; Android 15"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add stack traces, viewport and safe-area numbers, or other useful details.
