@@ -8,11 +8,8 @@
  * absolute value is sent as the difference from what the platform last acknowledged; `syncAchievements` asks for
  * progress only when those acknowledgements are stored durably.
  */
-import type {
-  Platform,
-  PlatformAchievement,
-  PlatformAchievements,
-} from '@/game/meta/achievements/platform'
+import type { Platform } from '@/game/balance/achievements'
+import type { PlatformAchievement, PlatformAchievements } from '@/game/meta/achievements/platform'
 
 /** The part of the game-services plugin the adapter uses. */
 export interface GameServicesPlugin {

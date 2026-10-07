@@ -11,13 +11,10 @@
  * incremental achievement's steps) less what that platform has acknowledged. So a report that failed or was never sent
  * simply stays outstanding, and sending twice is harmless.
  */
-import { ACHIEVEMENT_POINTS, type Grade } from '../../balance/achievements'
+import { ACHIEVEMENT_POINTS, type Grade, type Platform } from '../../balance/achievements'
 import type { AchievementProgress } from './evaluate'
 import PLAY_IDS from './play-ids.json'
 import { ACHIEVEMENTS, gradesOf } from './registry'
-
-export const PLATFORMS = ['play', 'game-center', 'steam'] as const
-export type Platform = (typeof PLATFORMS)[number]
 
 /** One grade of one achievement, as every platform knows it. */
 export type PlatformAchievement = {
