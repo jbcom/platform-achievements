@@ -9,7 +9,7 @@ description: Install platform-achievements, describe achievements, pick an adapt
 npm install platform-achievements
 ```
 
-Node 24 or later. ESM and CommonJS are both shipped.
+Node.js 22, 24 and 26 are supported (`>=22`, a maintained-line policy). ESM and CommonJS are both shipped.
 
 ## 1. Describe the achievements
 

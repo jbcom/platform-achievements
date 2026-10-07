@@ -41,5 +41,22 @@ requiring a system `zip` binary.
 
 Built on Node 26 and pnpm 12 with TypeScript 7 (native), every tsconfig on `moduleResolution:
 bundler`. The CommonJS build emits its own `.d.cts` declarations so a CommonJS consumer resolves
-correct types. `engines.node` is `>=24`. The first release is published locally once, with a token
+correct types. `engines.node` is `>=22`. The first release is published locally once, with a token
 passed only through `--userconfig`; later releases publish from `cd.yml` by OIDC trusted publishing.
+
+## 2026-10-07: support every maintained Node line
+
+Node.js 22, 24 and 26 are supported, with major-only CI selectors and a Node 26 development default.
+The `>=22` engine range expresses a maintained-line policy, rather than a promise about every
+historical patch. All shipped adapters use structural clients and need no newer Node API floor.
+The complete verification chain, including packed ESM/CommonJS consumers, is checked on Node 22
+and 26 locally; CI also verifies Node 24. Scripts and hooks impose no exact-patch equality check.
+
+## Branch rulesets use the shared OSS policy
+
+`scripts/apply-branch-ruleset.mjs` applies the three OSS rulesets idempotently, using merge commits
+and resolved review threads. With no arguments it targets `jbcom/platform-achievements` and requires
+`CI / gate`, `title`, `Repository Policy / gate` and `Dependency Review / gate`.
+Explicit repository and semicolon-separated check arguments override those defaults. It omits
+Copilot review and Code Quality rules because both spend AI credits. Applying rulesets is an
+explicit maintainer operation; CI does not run this script.
