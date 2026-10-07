@@ -1,6 +1,6 @@
 {
   "name": "platform-achievements",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cross-platform game achievements: one definition list mirrored to Google Play Games, Game Center and Steam with an idempotent earned-minus-acknowledged sync, structural adapters for the Capacitor game-services plugin and steamworks.js, and store-console submission files.",
   "type": "module",
   "license": "MIT",
